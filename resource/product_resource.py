@@ -1,9 +1,11 @@
 import sys
-sys.path.append('.')
+sys.path.append('model')
+sys.path.append('dao')
+sys.path.append('resource')
 from flask_restful import fields, marshal_with
-from dao.product_dao import ProductDao
-from models.product import Product
-from resources.base_resource import BaseResource
+from product_dao import ProductDao
+from product_model import Product
+from resource.base_resource import BaseResource
 
 
 class ProductResource(BaseResource):
