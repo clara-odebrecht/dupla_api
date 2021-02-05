@@ -1,15 +1,14 @@
 import sys
 sys.path.append('.')
-
 from utils.validators import validate_type, validate_not_empty, validate_length
 from sqlalchemy import Column, String, Float
 from model.base_model import BaseModel
 from sqlalchemy.orm import validates
 
 
-
 class Product(BaseModel):
-    __tablename__ = 'PRODUCT'
+    __tablename__ = 'product_02'
+    __table_args__ = {'extend_existing': True} 
     name = Column('name', String(length = 100), nullable = False)
     price = Column('price', Float, nullable = False)
     description = Column('description', String(length = 255), nullable = True)
