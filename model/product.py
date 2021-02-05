@@ -1,0 +1,33 @@
+import sys
+sys.path.append('.')
+from sqlalchemy import Column, String, Float
+from model.base import BaseModel
+from sqlalchemy.orm import validates
+from utils.validators import validate_type, validate_length, validate_not_empty
+
+class Product(BaseModel):
+    __tablename__ = 'produto'
+    name = Column('name', String(length = 100), nullable = False)
+    price = Column('price', Float, nullable = False)
+    description = Column('description', String(length = 255), nullable = True)
+
+    def __init__(self, name: str, price: float, description: str = None) -> None:
+        self.name = name
+        self.price = price
+        self.description = description
+
+    @validates('name')
+    def validate_name(self, key, name) -> None:
+        name = validate_type(name, str, key)
+        name = validate_not_empty(name, key)
+        return validates_length(name, 100, key)
+
+    @validates('description')
+    def validate_description(self, key, description) -> None:
+        description = validate_type(description, str, key)
+        return validates_length(description, 255, key)
+
+    @validates('price')
+    def validate_price(self, key, price) -> None:
+        price = validate_type(price, float, key)
+        return validate_not_empty(price, key)
