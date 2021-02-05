@@ -1,11 +1,7 @@
-import sys
-sys.path.append('model')
-sys.path.append('dao')
-sys.path.append('resource')
 from flask_restful import fields, marshal_with
-from product_dao import ProductDao
-from product_model import Product
-from resource.base_resource import BaseResource
+from dao.product_dao import ProductDao
+from model.product_model import Product
+from controller.base_resource import BaseResource
 
 
 class ProductResource(BaseResource):
@@ -13,7 +9,7 @@ class ProductResource(BaseResource):
         "id": fields.Integer,
         "name": fields.String,
         "price": fields.Float,
-        "description": fields.String,
+        "description": fields.String
     }
 
     def __init__(self):
@@ -22,7 +18,7 @@ class ProductResource(BaseResource):
         super().__init__(self.__dao, self.__model_type)
 
     @marshal_with(fields)
-    def get_cat(self, id = None):
+    def get(self, id=None):
         return super().get(id)
 
     @marshal_with(fields)

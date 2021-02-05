@@ -23,7 +23,7 @@ class BaseDao:
     def read_by_id(self, id: int) -> BaseModel:
         if isinstance(id, int):
             with Session() as session:
-                result = session.query(self.__type_model).filter_by(id).first()
+                result = session.query(self.__type_model).filter_by(id=id).first()
             return result
         else:
             raise TypeError('Id must be an integer')
