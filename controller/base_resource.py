@@ -1,4 +1,4 @@
-from type import Type
+from typing import Type
 from flask_restful import Resource
 from flask import request
 from dao.base_dao import BaseDao
@@ -7,7 +7,7 @@ from dao.base_dao import BaseDao
 class BaseResource(Resource):
     def __init__(self, dao: BaseDao, type_model: Type):
         self.__dao = dao
-        self.__model_type = model_type
+        self.__model_type = type_model
 
     def get(self, id = None):
         if id:
