@@ -1,11 +1,9 @@
 import sys
 sys.path.append('.')
-
 from utils.validators import validate_type, validate_not_empty, validate_length
 from sqlalchemy import Column, String, Float
 from model.base_model import BaseModel
 from sqlalchemy.orm import validates
-
 
 
 class Product(BaseModel):
