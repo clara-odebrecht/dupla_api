@@ -2,7 +2,7 @@ import sys
 sys.path.append('.')
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from model.base_model import BaseModel
+from models.base_model import BaseModel
 
 
 class Session:
