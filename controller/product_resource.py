@@ -1,6 +1,6 @@
 from flask_restful import fields, marshal_with
 from dao.product_dao import ProductDao
-from model.product_model import Product
+from models.product_model import Product
 from controller.base_resource import BaseResource
 
 
