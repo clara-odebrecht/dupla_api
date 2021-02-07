@@ -2,7 +2,7 @@ import sys
 sys.path.append('.')
 from utils.validators import validate_type, validate_not_empty, validate_length
 from sqlalchemy import Column, String, Float
-from model.base_model import BaseModel
+from models.base_model import BaseModel
 from sqlalchemy.orm import validates
 
 
@@ -26,6 +26,8 @@ class Product(BaseModel):
 
     @validates('description')
     def validate_description(self, key, description) -> None:
+        if description is None:
+            return description
         description = validate_type(description, str, key)
         return validate_length(description, 255, key)
 
