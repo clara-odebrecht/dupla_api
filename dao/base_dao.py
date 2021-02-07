@@ -1,6 +1,6 @@
 import sys
 sys.path.append('.')
-from model.base_model import BaseModel
+from models.base_model import BaseModel
 from dao.session import Session
 
 
